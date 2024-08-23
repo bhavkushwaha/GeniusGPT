@@ -37,9 +37,9 @@ export async function POST(
 
         const response = await openai.images.generate({
             model: "dall-e-3",
-            prompt: prompt,
+            prompt: "a girl",
             n: 1,
-            size: resolution,
+            size: "1024x1024",
         })
 
         return NextResponse.json(response.data[0].url);
