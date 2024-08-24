@@ -208,3 +208,5 @@ const ImagePage = () => {
 };
 
 export default ImagePage;
+
+// Adding this comment in order to create a new commit, since in the previous one the message was written as bit incorrect - instead of Video Generation, wrote Image Generation.
