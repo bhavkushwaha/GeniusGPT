@@ -50,7 +50,7 @@ const ImagePage = () => {
 
       const response = await axios.post("/api/image", values);
 
-      const imageUrl = response.data.imageUrl;
+      const imageUrl = response.data;
       setImage(imageUrl); // Store the single image URL in state
 
       // const urls = response.data.map((image: { url: string }) => image.url);
@@ -172,33 +172,35 @@ const ImagePage = () => {
             </div>
           )}
 
-          {image && !isLoading && (
+          {!image && !isLoading && (
             <div>
               <Empty label="No Images genereated." />
             </div>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
-            <Card className="rounded-lg overflow-hidden">
-              <div className="relative aspect-square">
-                {image && <Image alt="Image" fill src={image} />}
-              </div>
-              <CardFooter className="p-2">
-                <Button
-                  onClick={() => {
-                    if (image) {
-                      window.open(image);
-                    }
-                  }}
-                  variant="secondary"
-                  className="w-full"
-                >
-                  <Download className="h-4 w-4 mr-2 " />
-                  Download
-                </Button>
-              </CardFooter>
-            </Card>
-          </div>
+          {image && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-8">
+              <Card className="rounded-lg overflow-hidden">
+                <div className="relative aspect-square">
+                  <Image alt="Image" fill src={image} />
+                </div>
+                <CardFooter className="p-2">
+                  <Button
+                    onClick={() => {
+                      if (image) {
+                        window.open(image);
+                      }
+                    }}
+                    variant="secondary"
+                    className="w-full"
+                  >
+                    <Download className="h-4 w-4 mr-2 " />
+                    Download
+                  </Button>
+                </CardFooter>
+              </Card>
+            </div>
+          )}
         </div>
       </div>
     </div>
