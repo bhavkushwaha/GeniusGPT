@@ -1,6 +1,7 @@
 import { auth } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 import axios from 'axios';
+import { checkApiLimit, increaseApiLimit } from '@/lib/api-limit';
 
 export async function POST(req: Request) {
     try {
@@ -14,6 +15,12 @@ export async function POST(req: Request) {
 
         if (!prompt) {
             return new NextResponse("Prompt is required", { status: 400 });
+        }
+
+        const freeTrial = await checkApiLimit();
+
+        if(!freeTrial) {
+            return new NextResponse("Free tial has expired.", {status: 403});
         }
 
         const response = await axios.post(
@@ -46,6 +53,8 @@ export async function POST(req: Request) {
         );
 
         const buffer = Buffer.from(response.data);
+
+        await increaseApiLimit();
 
         return new NextResponse(buffer, {
             headers: {

@@ -82,7 +82,7 @@ const VoicePage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="How do I calculate the area of a circle?"
+                        placeholder="Piano Sound"
                         {...field}
                       />
                     </FormControl>
