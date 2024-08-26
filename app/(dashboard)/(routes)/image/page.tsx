@@ -25,9 +25,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardFooter } from "@/components/ui/card";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 const ImagePage = () => {
   const router = useRouter();
+
+  const proModal = useProModal();
 
   const [image, setImage] = useState<string | null>(null);
 
@@ -60,9 +63,11 @@ const ImagePage = () => {
 
       form.reset();
     } catch (error: any) {
-      // TODO: Open Pro Modal
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
       console.error("Error generating image:", error);
-      alert("Failed to generate image. Please try again.");
+      // alert("Failed to generate image. Please try again.");
       // console.log(error);
     } finally {
       router.refresh();

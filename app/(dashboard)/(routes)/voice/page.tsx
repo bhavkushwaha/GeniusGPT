@@ -16,9 +16,12 @@ import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/heading";
 import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 const VoicePage = () => {
   const router = useRouter();
+
+  const proModal = useProModal();
 
   const [voice, setVoice] = useState<string>();
 
@@ -51,7 +54,9 @@ const VoicePage = () => {
 
       form.reset();
     } catch (error: any) {
-      // TODO: Open Pro Modal
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
       console.log(error);
     } finally {
       router.refresh();
