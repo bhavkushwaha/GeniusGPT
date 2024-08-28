@@ -4,28 +4,29 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const testimonials = [
   {
-    name: "Bhav",
-    avatar: "B",
+    name: "Sam",
+    avatar: "S",
     title: "Software Engineer",
     description: "This is the best AI tool I've used so far!",
   },
   {
-    name: "Harshal",
-    avatar: "H",
+    name: "Priya",
+    avatar: "P",
     title: "Application Developer",
-    description: "This is the best AI tool I've used so far!",
+    description:
+      "Now I don't have to use multiple LLMs, I have got all at one place.",
   },
   {
-    name: "Divy",
+    name: "Daniel",
     avatar: "D",
     title: "Product Manager",
-    description: "This is the best AI tool I've used so far!",
+    description: "The models used give the most precise results.",
   },
   {
-    name: "Sameer",
-    avatar: "S",
+    name: "Yuki",
+    avatar: "Y",
     title: "Consultant",
-    description: "This is the best AI tool I've used so far!",
+    description: "Best AI tool for my product research, simplistic UI!",
   },
 ];
 
