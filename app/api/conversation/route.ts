@@ -41,6 +41,8 @@ export async function POST(
 
         await increaseApiLimit();
 
+        console.log(response);
+
         return NextResponse.json(response.choices[0].message);
 
     } catch (error) {
